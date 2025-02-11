@@ -25,24 +25,32 @@
          'release_date'=> 2002,
          'purchase_url' => "https//www.sahal.com"
       ],
+      [
+        'name' => "alogorthims",
+        'auther' => "martin",
+        'release_date'=> 2003,
+        'purchase_url' => "https//www.sahal.com"
+     ],
    ];
 
-   function filteredByAuther($books,$auther){
+   $filter= function ($items,$fn ){
 
-      $filtedrdBooks=[];
-      foreach($books as $book){
-         if($book['auther']==$auther){
-            $filtedrdBooks[]=$book;
+      $filtedrdItems=[];
+      foreach($items as $item){
+         if($fn($item)){
+            $filtedrdItems[]=$item;
          }
       }
-      return $filtedrdBooks;
-   }
-
+      return $filtedrdItems;
+   };
+      $filterdBooks=array_filter($books, function($book){
+        return $book['release_date']>=2002;
+      });
    
    ?>
 
    <ul>
-      <?php foreach (filteredByAuther($books,'martin') as $book): ?>
+      <?php foreach ( $filterdBooks as $book): ?>
 
          <li>
             <a href="<?= $book['purchase_url'];?>">
