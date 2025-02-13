@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-   <meta charset="UTF-8">
-   <title>Demo</title>
-</head>
 
-<body>
 
-   <h1>recomented books</h1>
-   <?php
 
    $books = [
 
@@ -47,24 +39,5 @@
         return $book['release_date']>=2002;
       });
    
-   ?>
-
-   <ul>
-      <?php foreach ( $filterdBooks as $book): ?>
-
-         <li>
-            <a href="<?= $book['purchase_url'];?>">
-               <?php echo $book['name'] ?> (<?php echo $book['release_date'];?>)
-
-            </a>
-
-
-         </li>
-      <?php endforeach; ?>
-   </ul>
-
-   <p>
-   </p>
-</body>
-
-</html>
+   
+      require 'index.view.php';
